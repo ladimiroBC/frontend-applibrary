@@ -1,0 +1,13 @@
+{
+  "homeText": {
+    "title": "Dashboard",
+    "titleStaticsGlobal": "Resumen de estadisticas globales",
+    "itemOneGlobal": "Numero total de estudiantes registrados: ",
+    "itemTwoGlobal": "Numero total de libros registrados en la biblioteca: ",
+    "itemThreeGlobal": "Numero total de prestamos realizados: ",
+    "titleQuickAction": "Acciones rapidas",
+    "itemOneAction": "Gestionar Estudiantes",
+    "itemTwoAction": "Gestionar libros",
+    "itemThreeAction": "Gestionar prestamos"
+  }
+}
