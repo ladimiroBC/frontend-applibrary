@@ -1,31 +1,33 @@
 import { Injectable } from "@angular/core";
-import { AppCrudStudent } from "../../domain/interfaces/app.crud.student";
+import { AppCrudBook } from "../../domain/interfaces/app.crud.book";
 import { Observable } from "rxjs";
-import { Student } from "../../domain/entitys/student";
+import { Book } from "../../domain/entitys/book";
 import { environment } from "../../../environments/environment";
 import { HttpClient } from "@angular/common/http";
 
-@Injectable({
-  providedIn: 'root'
-})
-export class StudentService implements AppCrudStudent {
+@Injectable()
+export class BookService implements AppCrudBook {
   private env = environment;
 
   constructor(private _http: HttpClient) { }
 
-  getAll(): Observable<Student[]> {
-    const students = this._http.get<Student[]>(this.env.studentEndPoint.getAll);
-    return students;
+  getAll(): Observable<Book[]> {
+    const books = this._http.get<Book[]>(this.env.bookEndPoint.getAll);
+    return books;
   }
-  getById(id: string): Observable<Student> {
+
+  getById(id: string): Observable<Book> {
     throw new Error("Method not implemented.");
   }
-  create(item: Student): Observable<Student> {
+
+  create(item: Book): Observable<Book> {
     throw new Error("Method not implemented.");
   }
-  update(id: string, item: Student): Observable<Student> {
+
+  update(id: string, item: Book): Observable<Book> {
     throw new Error("Method not implemented.");
   }
+
   delete(id: string): Observable<boolean> {
     throw new Error("Method not implemented.");
   }
