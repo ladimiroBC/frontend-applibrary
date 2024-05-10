@@ -1,0 +1,17 @@
+$cardDashboardBorderRadius: 30px;
+$cardDashboardImgTopPadding: 20px;
+$cardDashboardImgTopBorderRadius: 50px;
+
+div {
+  .card {
+    border-radius: $cardDashboardBorderRadius;
+  }
+}
+
+img {
+  .card-img-top {
+    padding: $cardDashboardImgTopPadding;
+    border-radius: $cardDashboardImgTopBorderRadius;
+  }
+}
+
