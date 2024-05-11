@@ -7,21 +7,23 @@ import { BookService } from "../../../application/services/book.service";
 import { Book } from "../../../domain/entitys/book";
 import { LoanService } from "../../../application/services/loan.service";
 import { Loan } from "../../../domain/entitys/loan";
+import { AppCrudStudent } from "../../../domain/interfaces/app.crud.student";
+import { AppCrudBook } from "../../../domain/interfaces/app.crud.book";
+import { AppCrudLoan } from "../../../domain/interfaces/app.crud.loan";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent extends HomeModel implements OnInit {
 
   constructor(
-    @Inject(ServiceApplicationLibrary.StudentService)
-    private _studentService: StudentService,
-    @Inject(ServiceApplicationLibrary.BookService)
-    private _bookService: BookService,
-    @Inject(ServiceApplicationLibrary.LoanService)
-    private _loanService: LoanService
+    @Inject(ServiceApplicationLibrary.AppCrudStudent)
+    private _studentService: AppCrudStudent,
+    @Inject(ServiceApplicationLibrary.AppCrudBook)
+    private _bookService: AppCrudBook,
+    @Inject(ServiceApplicationLibrary.AppCrudLoan)
+    private _loanService: AppCrudLoan
   )
   {
     super();

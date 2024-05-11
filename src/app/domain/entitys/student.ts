@@ -1,5 +1,5 @@
 export type Student = {
-  id?: number
+  idStudent?: number
   name: string
   code: string
   email: string

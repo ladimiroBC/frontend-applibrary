@@ -1,0 +1,12 @@
+{
+  "managementStudents": {
+    "title": "Gestion de Estudiantes",
+    "columnId": "ID",
+    "columnName": "Nombre",
+    "columnCode": "Code",
+    "columnEmail": "Email",
+    "columnCollegeCareer": "Carrera",
+    "ColumnStateStudent": "Estado",
+    "ColumnActions": "Acciones"
+  }
+}

@@ -5,16 +5,16 @@ import { BookService } from "../services/book.service";
 import { LoanService } from "../services/loan.service";
 
 export const ProviderStudentService: Provider = {
-  provide: ServiceApplicationLibrary.StudentService,
+  provide: ServiceApplicationLibrary.AppCrudStudent,
   useClass: StudentService
 }
 
 export const ProviderBookService:  Provider = {
-  provide: ServiceApplicationLibrary.BookService,
+  provide: ServiceApplicationLibrary.AppCrudBook,
   useClass: BookService
 }
 
 export const ProviderLoanService: Provider = {
-  provide: ServiceApplicationLibrary.LoanService,
+  provide: ServiceApplicationLibrary.AppCrudLoan,
   useClass: LoanService
 }

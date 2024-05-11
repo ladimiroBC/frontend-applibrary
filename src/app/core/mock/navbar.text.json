@@ -1,0 +1,9 @@
+{
+  "navbarText": {
+    "home": "Home",
+    "managementStudents": "Gestion Estudiantes",
+    "managementBooks": "Gestion Libros",
+    "managementLoans": "Gestion Prestamos",
+    "logout": "Logout"
+  }
+}
