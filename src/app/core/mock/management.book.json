@@ -1,22 +1,23 @@
 {
-  "managementStudents": {
-    "title": "Gestion de Estudiantes",
+  "managementBooks": {
+    "title": "Gestion de Libros",
     "columnId": "ID",
     "columnName": "Nombre",
-    "columnCode": "Code",
-    "columnEmail": "Email",
-    "columnCollegeCareer": "Carrera",
-    "columnStateStudent": "Estado",
+    "columnEditorial": "Editorial",
+    "columnAutor": "Autor",
+    "columnStateBook": "Estado",
+    "columnImg": "Img",
+    "columnRegisterCode": "Codigo",
     "columnActions": "Acciones",
     "titleCreate": "Formulario de creación",
     "titleModalUpdate": "Formulario de actualización",
     "requiredField": "Campo requerido",
-    "stateStudent": "Estado del estudiante",
+    "stateBook": "Estado del libro",
     "buttonClose": "Cerrar",
     "buttonAdd": "Crear",
     "buttonUpdate": "Guardar",
     "titleModalDelete": "Eliminar registro",
-    "questionToDeleteRecord": "Deseas eliminar el registro de este estudiante?",
+    "questionToDeleteRecord": "Deseas eliminar el registro de este libro?",
     "buttonDelete": "Eliminar"
   }
 }

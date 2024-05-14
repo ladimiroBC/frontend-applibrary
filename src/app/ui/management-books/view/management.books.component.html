@@ -1,0 +1,196 @@
+<div class="d-flex justify-content-between align-items-center mb-3 mt-2">
+  <h2 class="m-0">{{textManagementBooks.title}}</h2>
+  <!--Button Create-->
+  <button (click)="initCreate()" type="button" class="btn btn-info mx-2" data-bs-toggle="modal"
+    data-bs-target="#formBookCreate">
+    <i class="bi bi-plus-lg"></i>
+  </button>
+  <div class="modal fade" id="formBookCreate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">{{textManagementBooks.titleCreate}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formBook" (ngSubmit)="sendForm()" id="form">
+            <div class="col-12"><br>
+              <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+            </div>
+            <div class="col-12 bg-danger" *ngIf="formBook.get('name')?.touched &&
+                  formBook.get('name')?.errors?.['required']">
+              {{textManagementBooks.requiredField}}
+            </div>
+            <div class="col-12"><br>
+              <input type="text" class="form-control" id="editorial" placeholder="Editorial" formControlName="editorial">
+            </div>
+            <div class="col-12 bg-danger" *ngIf="formBook.get('editorial')?.touched
+                  && formBook.get('editorial')?.errors?.['required']">
+              {{textManagementBooks.requiredField}}
+            </div>
+            <div class="col-12"><br>
+              <input type="email" class="form-control" id="autor" placeholder="Autor" formControlName="autor">
+            </div>
+            <div class="col-12 bg-danger" *ngIf="formBook.get('autor')?.touched
+                  && formBook.get('autor')?.errors?.['required']">
+              {{textManagementBooks.requiredField}}
+            </div><br>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="stateBook" formControlName="stateBook">
+              <label class="form-check-label" for="stateBook">
+                {{textManagementBooks.stateBook}}
+              </label>
+            </div><br>
+            <div class="col-12">
+              <input type="text" class="form-control" id="img" placeholder="Img"
+                formControlName="img">
+            </div>
+            <div class="col-12 bg-danger" *ngIf="formBook.get('img')?.touched &&
+                  formBook.get('img')?.errors?.['required']">
+              {{textManagementBooks.requiredField}}
+            </div><br>
+            <div class="col-12">
+              <input type="text" class="form-control" id="registerCode" placeholder="Codigo"
+                formControlName="registerCode">
+            </div>
+            <div class="col-12 bg-danger" *ngIf="formBook.get('registerCode')?.touched &&
+                  formBook.get('registerCode')?.errors?.['required']">
+              {{textManagementBooks.requiredField}}
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"
+            data-bs-dismiss="modal">{{textManagementBooks.buttonClose}}</button>
+          <button (click)="createStudent()" form="formStudent" type="submit"
+            class="btn btn-primary">{{textManagementBooks.buttonAdd}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">{{textManagementBooks.columnId}}</th>
+      <th scope="col">{{textManagementBooks.columnName}}</th>
+      <th scope="col">{{textManagementBooks.columnEditorial}}</th>
+      <th scope="col">{{textManagementBooks.columnAutor}}</th>
+      <th scope="col">{{textManagementBooks.columnStateBook}}</th>
+      <th scope="col">{{textManagementBooks.columnRegisterCode}}</th>
+      <th scope="col">{{textManagementBooks.columnActions}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of books; track $index) {
+    <tr>
+      <th scope="row">{{item.idBook}}</th>
+      <td>{{item.name}}</td>
+      <td>{{item.editorial}}</td>
+      <td>{{item.autor}}</td>
+      <td>{{item.stateBook}}</td>
+      <td>{{item.registerCode}}</td>
+      <td>
+        <!--Button Edit-->
+        <div class="d-inline">
+          <button (click)="initUpdate(item.idBook!)" type="button" class="btn btn-warning mx-2" data-bs-toggle="modal"
+          data-bs-target="#formBookUpdate">
+          <i class="bi bi-pencil"></i>
+        </button>
+        <div class="modal fade" id="formBookUpdate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">{{textManagementBooks.titleModalUpdate}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="formBook" (ngSubmit)="sendForm()" id="form">
+                  @if (id) {
+                    <div class="col-12"><br>
+                      <input type="number" class="form-control" id="idBook" placeholder="Id" formControlName="idBook">
+                    </div>
+                  }
+                  <div class="col-12"><br>
+                    <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+                  </div>
+                  <div class="col-12 bg-danger" *ngIf="formBook.get('name')?.touched &&
+                        formBook.get('name')?.errors?.['required']">
+                    {{textManagementBooks.requiredField}}
+                  </div>
+                  <div class="col-12"><br>
+                    <input type="text" class="form-control" id="editorial" placeholder="Editorial" formControlName="editorial">
+                  </div>
+                  <div class="col-12 bg-danger" *ngIf="formBook.get('editorial')?.touched
+                        && formBook.get('editorial')?.errors?.['required']">
+                    {{textManagementBooks.requiredField}}
+                  </div>
+                  <div class="col-12"><br>
+                    <input type="email" class="form-control" id="autor" placeholder="Autor" formControlName="autor">
+                  </div>
+                  <div class="col-12 bg-danger" *ngIf="formBook.get('autor')?.touched
+                        && formBook.get('autor')?.errors?.['required']">
+                    {{textManagementBooks.requiredField}}
+                  </div><br>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="stateBook" formControlName="stateBook">
+                    <label class="form-check-label" for="stateBook">
+                      {{textManagementBooks.stateBook}}
+                    </label>
+                  </div><br>
+                  <div class="col-12">
+                    <input type="text" class="form-control" id="img" placeholder="Img"
+                      formControlName="img">
+                  </div>
+                  <div class="col-12 bg-danger" *ngIf="formBook.get('img')?.touched &&
+                        formBook.get('img')?.errors?.['required']">
+                    {{textManagementBooks.requiredField}}
+                  </div><br>
+                  <div class="col-12">
+                    <input type="text" class="form-control" id="registerCode" placeholder="Codigo"
+                      formControlName="registerCode">
+                  </div>
+                  <div class="col-12 bg-danger" *ngIf="formBook.get('registerCode')?.touched &&
+                        formBook.get('registerCode')?.errors?.['required']">
+                    {{textManagementBooks.requiredField}}
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{textManagementBooks.buttonClose}}</button>
+                <button (click)="updateBook()" form="formStudent" type="submit" class="btn btn-primary">{{textManagementBooks.buttonUpdate}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="d-inline">
+          <button (click)="initDeleteBook(item.idBook!)" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteRegister">
+            <i class="bi bi-trash"></i>
+          </button>
+          <div class="modal fade" id="deleteRegister" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">{{textManagementBooks.titleModalDelete}}</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  {{textManagementBooks.questionToDeleteRecord}}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{textManagementBooks.buttonClose}}</button>
+                  <button (click)="deleteBook()" type="button" class="btn btn-primary">{{textManagementBooks.buttonDelete}}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>

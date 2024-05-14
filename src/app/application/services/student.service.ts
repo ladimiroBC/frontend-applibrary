@@ -1,32 +1,33 @@
+import { Student } from './../../domain/entitys/student';
 import { Injectable } from "@angular/core";
 import { AppCrudStudent } from "../../domain/interfaces/app.crud.student";
 import { Observable } from "rxjs";
-import { Student } from "../../domain/entitys/student";
 import { environment } from "../../../environments/environment";
 import { HttpClient } from "@angular/common/http";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class StudentService implements AppCrudStudent {
   private env = environment;
 
   constructor(private _http: HttpClient) { }
 
   getAll(): Observable<Student[]> {
-    const students = this._http.get<Student[]>(this.env.studentEndPoint.getAll);
-    return students;
+    return this._http.get<Student[]>(this.env.studentEndPoint.getAll);
   }
-  getById(id: string): Observable<Student> {
-    throw new Error("Method not implemented.");
+
+  getById(id: number): Observable<Student> {
+    return this._http.get<Student>(this.env.studentEndPoint.getById(id));
   }
+
   create(item: Student): Observable<Student> {
-    throw new Error("Method not implemented.");
+    return this._http.post<Student>(this.env.studentEndPoint.create, item);
   }
-  update(id: string, item: Student): Observable<Student> {
-    throw new Error("Method not implemented.");
+
+  update(item: Student): Observable<Student> {
+    return this._http.put<Student>(this.env.studentEndPoint.update, item);
   }
-  delete(id: string): Observable<boolean> {
-    throw new Error("Method not implemented.");
+
+  delete(id: number): Observable<Student> {
+    return this._http.delete<Student>(this.env.studentEndPoint.delete(id));
   }
 }

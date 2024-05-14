@@ -5,6 +5,7 @@ import { FormGroup } from "@angular/forms";
 export abstract class ManagementStudentsModel {
   students!: Student[];
   student!: Student;
-  form!: FormGroup;
+  formStudent!: FormGroup;
+  id!: number;
   textManagementStudents = appTextManagementStudents.managementStudents;
 }

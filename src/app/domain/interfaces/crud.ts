@@ -1,9 +1,10 @@
 import { Observable } from "rxjs";
+import { Student } from "../entitys/student";
 
 export interface Crud<T> {
   getAll(): Observable<T[]>;
-  getById(id: string): Observable<T>;
+  getById(id: number): Observable<T>;
   create(item: T): Observable<T>;
-  update(id: string, item: T): Observable<T>;
-  delete(id: string): Observable<boolean>;
+  update(item: T): Observable<T>;
+  delete(id: number): Observable<T>;
 }

@@ -12,23 +12,22 @@ export class BookService implements AppCrudBook {
   constructor(private _http: HttpClient) { }
 
   getAll(): Observable<Book[]> {
-    const books = this._http.get<Book[]>(this.env.bookEndPoint.getAll);
-    return books;
+    return this._http.get<Book[]>(this.env.bookEndPoint.getAll);
   }
 
-  getById(id: string): Observable<Book> {
-    throw new Error("Method not implemented.");
+  getById(id: number): Observable<Book> {
+    return this._http.get<Book>(this.env.bookEndPoint.getById(id));
   }
 
   create(item: Book): Observable<Book> {
-    throw new Error("Method not implemented.");
+    return this._http.post<Book>(this.env.bookEndPoint.create, item);
   }
 
-  update(id: string, item: Book): Observable<Book> {
-    throw new Error("Method not implemented.");
+  update(item: Book): Observable<Book> {
+    return this._http.put<Book>(this.env.bookEndPoint.update, item);
   }
 
-  delete(id: string): Observable<boolean> {
-    throw new Error("Method not implemented.");
+  delete(id: number): Observable<Book> {
+    return this._http.delete<Book>(this.env.bookEndPoint.delete(id));
   }
 }

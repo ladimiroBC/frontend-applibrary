@@ -1,4 +1,67 @@
-<h2>{{textManagementStudents.title}}</h2>
+<div class="d-flex justify-content-between align-items-center mb-3 mt-2">
+  <h2 class="m-0">{{textManagementStudents.title}}</h2>
+  <!--Button Create-->
+  <button (click)="initCreate()" type="button" class="btn btn-info mx-2" data-bs-toggle="modal"
+    data-bs-target="#formStudentCreate">
+    <i class="bi bi-plus-lg"></i>
+  </button>
+  <div class="modal fade" id="formStudentCreate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">{{textManagementStudents.titleCreate}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formStudent" (ngSubmit)="sendForm()" id="form">
+            <div class="col-12"><br>
+              <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+            </div>
+            <div class="col-12 bg-danger" *ngIf="formStudent.get('name')?.touched &&
+                  formStudent.get('name')?.errors?.['required']">
+              {{textManagementStudents.requiredField}}
+            </div>
+            <div class="col-12"><br>
+              <input type="text" class="form-control" id="code" placeholder="Codigo" formControlName="code">
+            </div>
+            <div class="col-12 bg-danger" *ngIf="formStudent.get('code')?.touched
+                  && formStudent.get('code')?.errors?.['required']">
+              {{textManagementStudents.requiredField}}
+            </div>
+            <div class="col-12"><br>
+              <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
+            </div>
+            <div class="col-12 bg-danger" *ngIf="formStudent.get('email')?.touched
+                  && formStudent.get('email')?.errors?.['required']">
+              {{textManagementStudents.requiredField}}
+            </div><br>
+            <div class="col-12">
+              <input type="text" class="form-control" id="collegeCareer" placeholder="Carrera"
+                formControlName="collegeCareer">
+            </div>
+            <div class="col-12 bg-danger" *ngIf="formStudent.get('collegeCareer')?.touched &&
+                  formStudent.get('collegeCareer')?.errors?.['required']">
+              {{textManagementStudents.requiredField}}
+            </div><br>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="stateStudent" formControlName="stateStudent">
+              <label class="form-check-label" for="stateStudent">
+                {{textManagementStudents.stateStudent}}
+              </label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"
+            data-bs-dismiss="modal">{{textManagementStudents.buttonClose}}</button>
+          <button (click)="createStudent()" form="formStudent" type="submit"
+            class="btn btn-primary">{{textManagementStudents.buttonAdd}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -7,8 +70,8 @@
       <th scope="col">{{textManagementStudents.columnCode}}</th>
       <th scope="col">{{textManagementStudents.columnEmail}}</th>
       <th scope="col">{{textManagementStudents.columnCollegeCareer}}</th>
-      <th scope="col">{{textManagementStudents.ColumnStateStudent}}</th>
-      <th scope="col">{{textManagementStudents.ColumnActions}}</th>
+      <th scope="col">{{textManagementStudents.columnStateStudent}}</th>
+      <th scope="col">{{textManagementStudents.columnActions}}</th>
     </tr>
   </thead>
   <tbody>
@@ -22,47 +85,88 @@
       <td>{{item.stateStudent}}</td>
       <td>
         <!--Button Edit-->
-        <button type="button" class="btn btn-warning mx-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <button (click)="initUpdate(item.idStudent!)" type="button" class="btn btn-warning mx-2" data-bs-toggle="modal"
+          data-bs-target="#formStudentUpdate">
           <i class="bi bi-pencil"></i>
         </button>
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        <div class="modal fade" id="formStudentUpdate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
           aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">{{textManagementStudents.titleModalUpdate}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form [formGroup]="form">
-
+                <form [formGroup]="formStudent" (ngSubmit)="sendForm()" id="form">
+                  @if (id) {
+                    <div class="col-12"><br>
+                      <input type="number" class="form-control" id="idStudent" placeholder="Id" formControlName="idStudent">
+                    </div>
+                  }
+                  <div class="col-12"><br>
+                    <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+                  </div>
+                  <div class="col-12 bg-danger" *ngIf="formStudent.get('name')?.touched &&
+                  formStudent.get('name')?.errors?.['required']">
+                    {{textManagementStudents.requiredField}}
+                  </div>
+                  <div class="col-12"><br>
+                    <input type="text" class="form-control" id="code" placeholder="Codigo" formControlName="code">
+                  </div>
+                  <div class="col-12 bg-danger" *ngIf="formStudent.get('code')?.touched
+                  && formStudent.get('code')?.errors?.['required']">
+                    {{textManagementStudents.requiredField}}
+                  </div>
+                  <div class="col-12"><br>
+                    <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
+                  </div>
+                  <div class="col-12 bg-danger" *ngIf="formStudent.get('email')?.touched
+                  && formStudent.get('email')?.errors?.['required']">
+                    {{textManagementStudents.requiredField}}
+                  </div><br>
+                  <div class="col-12">
+                    <input type="text" class="form-control" id="collegeCareer" placeholder="Carrera"
+                      formControlName="collegeCareer">
+                  </div>
+                  <div class="col-12 bg-danger" *ngIf="formStudent.get('collegeCareer')?.touched &&
+                  formStudent.get('collegeCareer')?.errors?.['required']">
+                    {{textManagementStudents.requiredField}}
+                  </div><br>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="stateStudent"
+                      formControlName="stateStudent">
+                    <label class="form-check-label" for="stateStudent">
+                      {{textManagementStudents.stateStudent}}
+                    </label>
+                  </div>
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Understood</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{textManagementStudents.buttonClose}}</button>
+                <button (click)="updateStudent()" form="formStudent" type="submit" class="btn btn-primary">{{textManagementStudents.buttonUpdate}}</button>
               </div>
             </div>
           </div>
         </div>
         <!--Button Delete-->
-        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <button (click)="initDeleteStudent(item.idStudent!)" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteRegister">
           <i class="bi bi-trash"></i>
         </button>
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        <div class="modal fade" id="deleteRegister" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
           aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">{{textManagementStudents.titleModalDelete}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                ...
+                {{textManagementStudents.questionToDeleteRecord}}
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Understood</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{textManagementStudents.buttonClose}}</button>
+                <button (click)="deleteStudent()" type="button" class="btn btn-primary">{{textManagementStudents.buttonDelete}}</button>
               </div>
             </div>
           </div>

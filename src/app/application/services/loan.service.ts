@@ -16,7 +16,7 @@ export class LoanService implements AppCrudLoan {
     return loans;
   }
 
-  getById(id: string): Observable<Loan> {
+  getById(id: number): Observable<Loan> {
     throw new Error("Method not implemented.");
   }
 
@@ -24,12 +24,11 @@ export class LoanService implements AppCrudLoan {
     throw new Error("Method not implemented.");
   }
 
-  update(id: string, item: Loan): Observable<Loan> {
+  update(item: Loan): Observable<Loan> {
     throw new Error("Method not implemented.");
   }
 
-  delete(id: string): Observable<boolean> {
-    throw new Error("Method not implemented.");
+  delete(id: number): Observable<Loan> {
+    throw new Error('Method not implemented.');
   }
-
 }
