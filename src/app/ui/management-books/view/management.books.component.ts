@@ -16,8 +16,7 @@ export class AppManagementBooks extends ManagementBooksModel implements OnInit {
     @Inject(ServiceApplicationLibrary.AppCrudBook)
     private _bookService: AppCrudBook,
     private _formBuilder: FormBuilder
-  )
-  {
+  ) {
     super();
   }
 
