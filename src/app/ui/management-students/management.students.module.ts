@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { AppManagementStudents } from "./view/management.students.component";
+import { ManagementStudentsComponent } from "./view/management.students.component";
 import { CommonModule } from "@angular/common";
 import { SharedModule } from "../../shared/shared.module";
 import { RouterModule } from "@angular/router";
@@ -9,7 +9,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
-    AppManagementStudents
+    ManagementStudentsComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +18,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     RouterModule.forChild(appStudents)
   ],
   exports: [
-    AppManagementStudents
+    ManagementStudentsComponent
   ],
   providers: [
     ProviderStudentService

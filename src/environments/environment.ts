@@ -17,6 +17,7 @@ export const environment = {
     delete: (id: number) => `${baseUrl}/book/${id}`
   },
   loanEndPoint: {
-    getAll: `${baseUrl}/loan/list`
+    getAll: `${baseUrl}/loan/list`,
+    checkStudent: `${baseUrl}/loan/check-student`
   }
 }

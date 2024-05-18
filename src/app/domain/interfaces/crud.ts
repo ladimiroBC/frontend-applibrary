@@ -1,5 +1,4 @@
 import { Observable } from "rxjs";
-import { Student } from "../entitys/student";
 
 export interface Crud<T> {
   getAll(): Observable<T[]>;

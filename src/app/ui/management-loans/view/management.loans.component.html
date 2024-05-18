@@ -1,0 +1,25 @@
+<h2>{{textManagementLoans.title}}</h2>
+<div class="container mt-3">
+  <form [formGroup]="searchStudentForm" (ngSubmit)="onSearch()">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" formControlName="code" placeholder="Código de Estudiante">
+      <button class="btn btn-primary" type="submit">{{textManagementLoans.buttonSearch}}</button>
+    </div>
+  </form>
+  @if (studentCheck) {
+  <div>
+    <h3>{{textManagementLoans.studentFound}}</h3>
+    <p><strong>{{textManagementLoans.studentName}}</strong>{{studentCheck.student.name}}</p>
+    <p><strong>{{textManagementLoans.studentCode}}</strong>{{studentCheck.student.code}}</p>
+    <p><strong>{{textManagementLoans.studentEmail}}</strong>{{studentCheck.student.email}}</p>
+    <p><strong>{{textManagementLoans.CollegeCareer}}</strong>{{studentCheck.student.collegeCareer}}</p>
+    <p><strong>{{textManagementLoans.studentState}}</strong>{{studentCheck.student.stateStudent ? 'Activo' : 'Inactivo'}}</p>
+    <p><strong>{{textManagementLoans.numberOfLoans}}</strong>{{studentCheck.numberOfLoans}}</p>
+  </div>
+  }
+  @if (errorMessage) {
+  <div class="alert alert-danger mt-3">
+    {{errorMessage}}
+  </div>
+  }
+</div>

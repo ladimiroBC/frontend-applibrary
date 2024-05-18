@@ -1,3 +1,4 @@
+import { IApplicationMessages } from './../../domain/interfaces/app.messages';
 import { AppCrudLoan } from './../../domain/interfaces/app.crud.loan';
 import { AppCrudBook } from './../../domain/interfaces/app.crud.book';
 import { AppCrudStudent } from './../../domain/interfaces/app.crud.student';
@@ -5,5 +6,6 @@ import { AppCrudStudent } from './../../domain/interfaces/app.crud.student';
 export enum ServiceApplicationLibrary {
   AppCrudStudent,
   AppCrudBook,
-  AppCrudLoan
+  AppCrudLoan,
+  IApplicationMessages
 }

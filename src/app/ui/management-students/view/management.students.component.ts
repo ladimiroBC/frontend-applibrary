@@ -10,7 +10,7 @@ import { StudentForm } from "../form/student.form";
   selector: 'app-students',
   templateUrl: './management.students.component.html'
 })
-export class AppManagementStudents extends ManagementStudentsModel implements OnInit {
+export class ManagementStudentsComponent extends ManagementStudentsModel implements OnInit {
 
   constructor(
     @Inject(ServiceApplicationLibrary.AppCrudStudent)

@@ -10,7 +10,7 @@ import { Book } from "../../../domain/entitys/book";
   selector: 'app-students',
   templateUrl: './management.books.component.html'
 })
-export class AppManagementBooks extends ManagementBooksModel implements OnInit {
+export class ManagementBooksComponent extends ManagementBooksModel implements OnInit {
 
   constructor(
     @Inject(ServiceApplicationLibrary.AppCrudBook)
