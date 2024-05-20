@@ -1,0 +1,11 @@
+{
+  "bookCatalog": {
+    "title": "Catalogo de Libros",
+    "editorial": "Editorial: ",
+    "autor": "Autor: ",
+    "stateBookNotMaintenance": "Estado fisico: Disponible",
+    "stateBookMaintenance": "Estado fisico: Mantenimiento",
+    "stateLoan": "Estado de prestamo: ",
+    "registerCode": "Codigo de registro: "
+  }
+}

@@ -4,6 +4,7 @@
     "managementStudents": "Gestion Estudiantes",
     "managementBooks": "Gestion Libros",
     "managementLoans": "Gestion Prestamos",
+    "bookCatalog": "Catalogo de libros",
     "logout": "Logout"
   }
 }
