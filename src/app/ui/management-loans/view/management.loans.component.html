@@ -1,25 +1,73 @@
 <h2>{{textManagementLoans.title}}</h2>
 <div class="container mt-3">
-  <form [formGroup]="searchStudentForm" (ngSubmit)="onSearch()">
+  <form [formGroup]="searchStudentForm" (ngSubmit)="onSearchStudent()">
     <div class="input-group mb-3">
       <input type="text" class="form-control" formControlName="code" placeholder="Código de Estudiante">
       <button class="btn btn-primary" type="submit">{{textManagementLoans.buttonSearch}}</button>
     </div>
   </form>
   @if (studentCheck) {
-  <div>
+  <div class="container">
     <h3>{{textManagementLoans.studentFound}}</h3>
-    <p><strong>{{textManagementLoans.studentName}}</strong>{{studentCheck.student.name}}</p>
-    <p><strong>{{textManagementLoans.studentCode}}</strong>{{studentCheck.student.code}}</p>
-    <p><strong>{{textManagementLoans.studentEmail}}</strong>{{studentCheck.student.email}}</p>
-    <p><strong>{{textManagementLoans.CollegeCareer}}</strong>{{studentCheck.student.collegeCareer}}</p>
-    <p><strong>{{textManagementLoans.studentState}}</strong>{{studentCheck.student.stateStudent ? 'Activo' : 'Inactivo'}}</p>
-    <p><strong>{{textManagementLoans.numberOfLoans}}</strong>{{studentCheck.numberOfLoans}}</p>
+    <div class="row">
+      <div class="col-md-4">
+        <p><strong>{{textManagementLoans.studentName}}</strong>{{studentCheck.student.name}}</p>
+      </div>
+      <div class="col-md-4">
+        <p><strong>{{textManagementLoans.studentCode}}</strong>{{studentCheck.student.code}}</p>
+      </div>
+      <div class="col-md-4">
+        <p><strong>{{textManagementLoans.studentEmail}}</strong>{{studentCheck.student.email}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <p><strong>{{textManagementLoans.CollegeCareer}}</strong>{{studentCheck.student.collegeCareer}}</p>
+      </div>
+      <div class="col-md-4">
+        <p><strong>{{textManagementLoans.studentState}}</strong>{{studentCheck.student.stateStudent ? 'Activo' : 'Inactivo'}}</p>
+      </div>
+      <div class="col-md-4">
+        <p><strong>{{textManagementLoans.numberOfLoans}}</strong>{{studentCheck.numberOfLoans}}</p>
+      </div>
+    </div>
   </div>
+  <form [formGroup]="searchBookForm" (ngSubmit)="onSearchBook()">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" formControlName="code" placeholder="Código del libro">
+      <button class="btn btn-primary" type="submit">{{textManagementLoans.buttonSearch}}</button>
+    </div>
+  </form>
   }
-  @if (errorMessage) {
+  @if (errorMessageStudent) {
   <div class="alert alert-danger mt-3">
-    {{errorMessage}}
+    {{errorMessageStudent}}
   </div>
   }
 </div>
+@if(bookCheck) {
+  <div class="container">
+    <h3>{{textManagementLoans.bookFound}}</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <p><strong>{{textManagementLoans.nameBook}}</strong>{{bookCheck.book.name}}</p>
+      </div>
+      <div class="col-md-6">
+        <p><strong>{{textManagementLoans.editorial}}</strong>{{bookCheck.book.editorial}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <p><strong>{{textManagementLoans.autor}}</strong>{{bookCheck.book.autor}}</p>
+      </div>
+      <div class="col-md-6">
+        <p><strong>{{textManagementLoans.stateBook}}</strong>{{bookCheck.book.stateBook ? 'Disponible' : 'Mantenimiento'}}</p>
+      </div>
+    </div>
+  </div>
+}
+@if(errorMessageBook) {
+  <div class="alert alert-danger mt-3">
+    {{errorMessageBook}}
+  </div>
+}

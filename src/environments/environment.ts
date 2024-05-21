@@ -14,7 +14,8 @@ export const environment = {
     getById: (id: number) => `${baseUrl}/book/list/${id}`,
     create: `${baseUrl}/book/`,
     update: `${baseUrl}/book/`,
-    delete: (id: number) => `${baseUrl}/book/${id}`
+    delete: (id: number) => `${baseUrl}/book/${id}`,
+    checkBook: `${baseUrl}/book/check-book`
   },
   loanEndPoint: {
     getAll: `${baseUrl}/loan/list`,

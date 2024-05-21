@@ -8,6 +8,11 @@
     "studentEmail": "Email: ",
     "CollegeCareer": "Carrera: ",
     "studentState": "Estado: ",
-    "numberOfLoans": "Numero de prestamos: "
+    "numberOfLoans": "Numero de prestamos: ",
+    "bookFound": "Libro encontrado:",
+    "nameBook": "Nombre: ",
+    "editorial": "Editorial: ",
+    "autor": "Autor: ",
+    "stateBook": "Estado: "
   }
 }

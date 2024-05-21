@@ -3,13 +3,19 @@ import { AppCrudBook } from "../../domain/interfaces/app.crud.book";
 import { Observable } from "rxjs";
 import { Book } from "../../domain/entitys/book";
 import { environment } from "../../../environments/environment";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { BookCheck } from "../../domain/entitys/book.check";
 
 @Injectable()
 export class BookService implements AppCrudBook {
   private env = environment;
 
   constructor(private _http: HttpClient) { }
+
+  check(code: string): Observable<BookCheck> {
+    const params = new HttpParams().set('registerCode', code);
+    return this._http.get<BookCheck>(this.env.bookEndPoint.checkBook, {params});
+  }
 
   getAll(): Observable<Book[]> {
     return this._http.get<Book[]>(this.env.bookEndPoint.getAll);

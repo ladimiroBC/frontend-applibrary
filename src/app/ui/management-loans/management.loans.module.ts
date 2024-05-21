@@ -5,7 +5,7 @@ import { CommonModule } from "@angular/common";
 import { SharedModule } from "../../shared/shared.module";
 import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
-import { ProviderAppMessages, ProviderLoanService } from "../../application/providers/provider.app.library";
+import { ProviderAppMessages, ProviderBookService, ProviderLoanService } from "../../application/providers/provider.app.library";
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import { ProviderAppMessages, ProviderLoanService } from "../../application/prov
   ],
   providers: [
     ProviderAppMessages,
-    ProviderLoanService
+    ProviderLoanService,
+    ProviderBookService
   ]
 })
 export class ManagementLoansModule { }
