@@ -25,7 +25,8 @@
         <p><strong>{{textManagementLoans.CollegeCareer}}</strong>{{studentCheck.student.collegeCareer}}</p>
       </div>
       <div class="col-md-4">
-        <p><strong>{{textManagementLoans.studentState}}</strong>{{studentCheck.student.stateStudent ? 'Activo' : 'Inactivo'}}</p>
+        <p><strong>{{textManagementLoans.studentState}}</strong>{{studentCheck.student.stateStudent ? 'Activo' :
+          'Inactivo'}}</p>
       </div>
       <div class="col-md-4">
         <p><strong>{{textManagementLoans.numberOfLoans}}</strong>{{studentCheck.numberOfLoans}}</p>
@@ -46,31 +47,32 @@
   }
 </div>
 @if(bookCheck) {
-  <div class="container">
-    <h3>{{textManagementLoans.bookFound}}</h3>
-    <div class="row">
-      <div class="col-md-6">
-        <p><strong>{{textManagementLoans.nameBook}}</strong>{{bookCheck.book.name}}</p>
-      </div>
-      <div class="col-md-6">
-        <p><strong>{{textManagementLoans.editorial}}</strong>{{bookCheck.book.editorial}}</p>
-      </div>
+<div class="container">
+  <h3>{{textManagementLoans.bookFound}}</h3>
+  <div class="row">
+    <div class="col-md-6">
+      <p><strong>{{textManagementLoans.nameBook}}</strong>{{bookCheck.book.name}}</p>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <p><strong>{{textManagementLoans.autor}}</strong>{{bookCheck.book.autor}}</p>
-      </div>
-      <div class="col-md-6">
-        <p><strong>{{textManagementLoans.stateBook}}</strong>{{bookCheck.book.stateBook ? 'Disponible' : 'Mantenimiento'}}</p>
-      </div>
+    <div class="col-md-6">
+      <p><strong>{{textManagementLoans.editorial}}</strong>{{bookCheck.book.editorial}}</p>
     </div>
   </div>
-  <div class="d-flex justify-content-center mt-4">
-    <button (click)="onBorrowBook()" class="btn btn-primary">{{textManagementLoans.buttonLendBook}}</button>
+  <div class="row">
+    <div class="col-md-6">
+      <p><strong>{{textManagementLoans.autor}}</strong>{{bookCheck.book.autor}}</p>
+    </div>
+    <div class="col-md-6">
+      <p><strong>{{textManagementLoans.stateBook}}</strong>{{bookCheck.book.stateBook ? 'Disponible' : 'Mantenimiento'}}
+      </p>
+    </div>
   </div>
+</div>
+<div class="d-flex justify-content-center mt-4">
+  <button (click)="onBorrowBook()" class="btn btn-primary">{{textManagementLoans.buttonLendBook}}</button>
+</div>
 }
 @if(errorMessageBook) {
-  <div class="alert alert-danger mt-3">
-    {{errorMessageBook}}
-  </div>
+<div class="alert alert-danger mt-3">
+  {{errorMessageBook}}
+</div>
 }

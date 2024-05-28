@@ -14,17 +14,17 @@ export class LoanService implements AppCrudLoan {
   constructor(private _http: HttpClient) { }
 
   borrowBook(borrowBook: BorrowBook): Observable<string> {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'})
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
     const params = new HttpParams()
       .set('code', borrowBook.codeStudent)
       .set('registerCode', borrowBook.codeBook)
 
-    return this._http.post(this.env.loanEndPoint.borrowBook, null, {headers, params, responseType: 'text'});
+    return this._http.post(this.env.loanEndPoint.borrowBook, null, { headers, params, responseType: 'text' });
   }
 
   check(code: string): Observable<StudentCheck> {
     const params = new HttpParams().set('code', code);
-    return this._http.get<StudentCheck>(this.env.loanEndPoint.checkStudent, {params});
+    return this._http.get<StudentCheck>(this.env.loanEndPoint.checkStudent, { params });
   }
 
   getAll(): Observable<Loan[]> {

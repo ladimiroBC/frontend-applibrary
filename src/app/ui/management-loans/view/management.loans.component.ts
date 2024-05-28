@@ -57,7 +57,7 @@ export class ManagementLoansComponent extends ManagementLoansModel implements On
   }
 
   onSearchBook() {
-    if(this.searchBookForm.valid) {
+    if (this.searchBookForm.valid) {
       this.resetBookState();
       const code = this.searchBookForm.get('code')?.value;
       this._bookService.check(code).subscribe({
