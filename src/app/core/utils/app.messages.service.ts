@@ -32,8 +32,10 @@ export class ApplicationMessages implements IApplicationMessages {
       return this.errorMessages = AppMessagesErrors.BOOK_NOT_FOUND;
     } else if (error.status === 400) {
       return this.errorMessages = AppMessagesErrors.BOOK_MAINTENANCE;
-    } else {
+    } else if (error.status === 423) {
       return this.errorMessages = AppMessagesErrors.BOOK_BORROWED;
+    } else {
+      return this.errorMessages = AppMessagesErrors.UNFORESEEN_ERROR;
     }
   }
 }

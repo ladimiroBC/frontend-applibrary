@@ -6,8 +6,10 @@ import { BookCheck } from "../../../domain/entitys/book.check";
 export abstract class ManagementLoansModel {
   searchStudentForm!: FormGroup;
   searchBookForm!: FormGroup;
-  studentCheck!: StudentCheck;
-  bookCheck!: BookCheck;
+  codeStudent!: string;
+  codeBook!: string;
+  studentCheck!: StudentCheck | null;
+  bookCheck!: BookCheck | null;
   errorMessageStudent!: string;
   errorMessageBook!: string;
   textManagementLoans = appTextManagementLoans.managementLoan;

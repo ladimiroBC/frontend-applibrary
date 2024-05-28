@@ -7,6 +7,7 @@ import { SearchStudentForm } from "../form/search.student.form";
 import { IApplicationMessages } from "../../../domain/interfaces/app.messages";
 import { SearchBookForm } from "../form/search.book.form";
 import { AppCrudBook } from "../../../domain/interfaces/app.crud.book";
+import { BorrowBook } from "../../../domain/entitys/borrow.book";
 
 @Component({
   selector: 'app-loans',
@@ -41,11 +42,12 @@ export class ManagementLoansComponent extends ManagementLoansModel implements On
 
   onSearchStudent() {
     if (this.searchStudentForm.valid) {
+      this.resetStudentState();
       const code = this.searchStudentForm.get('code')?.value;
       this._loanService.check(code).subscribe({
         next: (response) => {
           this.studentCheck = response;
-          console.log('Estudiante encontrado: ', this.studentCheck);
+          this.codeStudent = this.studentCheck.student.code;
         },
         error: (error) => {
           this.errorMessageStudent = this._messagesService.showMessagesErrorStudentCheck(error);
@@ -56,16 +58,41 @@ export class ManagementLoansComponent extends ManagementLoansModel implements On
 
   onSearchBook() {
     if(this.searchBookForm.valid) {
+      this.resetBookState();
       const code = this.searchBookForm.get('code')?.value;
       this._bookService.check(code).subscribe({
         next: (response) => {
           this.bookCheck = response;
-          console.log('Libro encontrado: ',this.bookCheck);
+          this.codeBook = this.bookCheck.book.registerCode;
         },
         error: (error) => {
           this.errorMessageBook = this._messagesService.showMessagesErrorBookCheck(error);
         }
       })
     }
+  }
+
+  onBorrowBook() {
+    const borrowBook: BorrowBook = {
+      codeStudent: this.codeStudent,
+      codeBook: this.codeBook
+    }
+
+    this._loanService.borrowBook(borrowBook).subscribe({
+      next: () => alert(`Prestamo realizado con exito`),
+      error: console.log
+    })
+  }
+
+  resetStudentState() {
+    this.studentCheck = null;
+    this.errorMessageStudent = '';
+    this.codeStudent = '';
+  }
+
+  resetBookState() {
+    this.bookCheck = null;
+    this.errorMessageBook = '';
+    this.codeBook = '';
   }
 }

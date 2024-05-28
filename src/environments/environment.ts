@@ -19,6 +19,7 @@ export const environment = {
   },
   loanEndPoint: {
     getAll: `${baseUrl}/loan/list`,
-    checkStudent: `${baseUrl}/loan/check-student`
+    checkStudent: `${baseUrl}/loan/check-student`,
+    borrowBook: `${baseUrl}/loan/borrow-book`
   }
 }

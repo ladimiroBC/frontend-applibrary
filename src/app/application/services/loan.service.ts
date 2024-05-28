@@ -3,14 +3,24 @@ import { Injectable } from "@angular/core";
 import { AppCrudLoan } from "../../domain/interfaces/app.crud.loan";
 import { Observable } from "rxjs";
 import { Loan } from "../../domain/entitys/loan";
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { StudentCheck } from '../../domain/entitys/student.check';
+import { BorrowBook } from '../../domain/entitys/borrow.book';
 
 @Injectable()
 export class LoanService implements AppCrudLoan {
   private env = environment;
 
   constructor(private _http: HttpClient) { }
+
+  borrowBook(borrowBook: BorrowBook): Observable<string> {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'})
+    const params = new HttpParams()
+      .set('code', borrowBook.codeStudent)
+      .set('registerCode', borrowBook.codeBook)
+
+    return this._http.post(this.env.loanEndPoint.borrowBook, null, {headers, params, responseType: 'text'});
+  }
 
   check(code: string): Observable<StudentCheck> {
     const params = new HttpParams().set('code', code);
